@@ -10,13 +10,20 @@ import org.junit.Test;
 public class BeanFactoryTest {
 
     @Test
-    public void test() {
+    public void test() throws Exception {
         // 初始化beanFactory
         BeanFactory beanFactory = new AutowireCapableBeanFactory();
 
-        // 注入bean
+        // 定义bean
         BeanDefinition beanDefinition = new BeanDefinition();
         beanDefinition.setBeanClassName("my.learn.tinyioc.HelloWorldService");
+
+        // 设置属性
+        PropertyValues propertyValues = new PropertyValues();
+        PropertyValue propertyValue = new PropertyValue("text", "Hello World");
+        propertyValues.addPropertyValue(propertyValue);
+        beanDefinition.setPropertyValues(propertyValues);
+
         beanFactory.registerBeanDefinition("helloWorldService", beanDefinition);
 
         // 获取bean

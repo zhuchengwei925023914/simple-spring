@@ -1,5 +1,7 @@
 package my.learn.tinyioc;
 
+import java.util.ArrayList;
+
 /**
  * Created by zhu on 2019/3/21.
  */
@@ -10,6 +12,8 @@ public class BeanDefinition {
     private Class beanClass;
 
     private String beanClassName;
+
+    private PropertyValues propertyValues;
 
     public BeanDefinition() {
 
@@ -43,5 +47,13 @@ public class BeanDefinition {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public PropertyValues getPropertyValues() {
+        return propertyValues == null ? new PropertyValues() : propertyValues;
+    }
+
+    public void setPropertyValues(PropertyValues propertyValues) {
+        this.propertyValues = propertyValues;
     }
 }
