@@ -1,9 +1,6 @@
 package my.learn.tinyioc.xml;
 
-import my.learn.tinyioc.AbstractBeanDefinitionReader;
-import my.learn.tinyioc.BeanDefinition;
-import my.learn.tinyioc.PropertyValue;
-import my.learn.tinyioc.PropertyValues;
+import my.learn.tinyioc.*;
 import my.learn.tinyioc.io.ResourceLoader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -74,9 +71,20 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
                 Element propertyElement = (Element) node;
                 String name = propertyElement.getAttribute("name");
                 String value = propertyElement.getAttribute("value");
-                PropertyValue propertyValue = new PropertyValue(name, value);
                 PropertyValues propertyValues = beanDefinition.getPropertyValues();
-                propertyValues.addPropertyValue(propertyValue);
+                if (value != null && value.length() > 0) {
+                    PropertyValue propertyValue = new PropertyValue(name, value);
+                    propertyValues.addPropertyValue(propertyValue);
+                } else {
+                    String ref = propertyElement.getAttribute("ref");
+                    if (ref == null || ref.length() == 0) {
+                        throw new IllegalArgumentException("Configuration problem: <property> element for property "
+                                + name + " must specify a ref or value");
+                    }
+                    BeanReference beanReference = new BeanReference(ref);
+                    PropertyValue propertyValue = new PropertyValue(name, beanReference);
+                    propertyValues.addPropertyValue(propertyValue);
+                }
                 beanDefinition.setPropertyValues(propertyValues);
             }
         }

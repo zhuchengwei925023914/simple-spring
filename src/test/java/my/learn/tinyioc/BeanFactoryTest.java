@@ -1,5 +1,6 @@
 package my.learn.tinyioc;
 
+import my.learn.tinyioc.factory.AbstractBeanFactory;
 import my.learn.tinyioc.factory.AutowireCapableBeanFactory;
 import my.learn.tinyioc.factory.BeanFactory;
 import my.learn.tinyioc.io.ResourceLoader;
@@ -14,7 +15,7 @@ import java.util.Map;
 public class BeanFactoryTest {
 
     @Test
-    public void test() throws Exception {
+    public void testLazy() throws Exception {
         // 读取配置
         ResourceLoader resourceLoader = new ResourceLoader();
         XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(resourceLoader);
@@ -26,6 +27,28 @@ public class BeanFactoryTest {
         for (Map.Entry<String, BeanDefinition> beanDefinitionEntry : registry.entrySet()) {
             beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());
         }
+
+        // 获取bean
+        HelloWorldService helloWorldService = (HelloWorldService) beanFactory.getBean("helloWorldService");
+        helloWorldService.helloWorld();
+    }
+
+    @Test
+    public void testPreInstantiate() throws Exception {
+        // 读取配置
+        ResourceLoader resourceLoader = new ResourceLoader();
+        XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(resourceLoader);
+        xmlBeanDefinitionReader.loadBeanDefinitions("tinyioc.xml");
+
+        // 初始化BeanFactory并注册bean
+        AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
+        Map<String, BeanDefinition> registry = xmlBeanDefinitionReader.getRegistry();
+        for (Map.Entry<String, BeanDefinition> beanDefinitionEntry : registry.entrySet()) {
+            beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());
+        }
+
+        // 初始化bean
+        beanFactory.preInstantiateSingletons();
 
         // 获取bean
         HelloWorldService helloWorldService = (HelloWorldService) beanFactory.getBean("helloWorldService");

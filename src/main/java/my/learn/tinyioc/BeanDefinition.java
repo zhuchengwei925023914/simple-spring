@@ -15,6 +15,8 @@ public class BeanDefinition {
 
     private PropertyValues propertyValues;
 
+    private Boolean isCreating;
+
     public BeanDefinition() {
 
     }
@@ -55,5 +57,13 @@ public class BeanDefinition {
 
     public void setPropertyValues(PropertyValues propertyValues) {
         this.propertyValues = propertyValues;
+    }
+
+    public Boolean getIsCreating() {
+        return isCreating == null ? false : isCreating;
+    }
+
+    public void setIsCreating(Boolean isCreating) {
+        this.isCreating = isCreating;
     }
 }

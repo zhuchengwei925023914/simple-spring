@@ -4,7 +4,12 @@
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
+    <bean name="outputService" class="my.learn.tinyioc.OutputService">
+        <property name="helloWorldService" ref="helloWorldService"/>
+    </bean>
+
     <bean name="helloWorldService" class="my.learn.tinyioc.HelloWorldService">
         <property name="text" value="Hello World"/>
+        <property name="outputService" ref="outputService"/>
     </bean>
 </beans>
