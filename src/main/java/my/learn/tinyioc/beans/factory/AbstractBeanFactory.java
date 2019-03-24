@@ -1,6 +1,6 @@
-package my.learn.tinyioc.factory;
+package my.learn.tinyioc.beans.factory;
 
-import my.learn.tinyioc.BeanDefinition;
+import my.learn.tinyioc.beans.BeanDefinition;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -44,7 +44,6 @@ public abstract class AbstractBeanFactory implements BeanFactory {
         return bean;
     }
 
-    @Override
     public void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception {
         beanDefinitionMap.put(name, beanDefinition);
         beanDefinitionNames.add(name);
@@ -61,6 +60,10 @@ public abstract class AbstractBeanFactory implements BeanFactory {
             String beanName = (String) iterator.next();
             getBean(beanName);
         }
+    }
+
+    public void setCycleDependencyCheckSwitch(boolean cycleDependencyCheckSwitch) {
+        this.cycleDependencyCheckSwitch = cycleDependencyCheckSwitch;
     }
 
     /**

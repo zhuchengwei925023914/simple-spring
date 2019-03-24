@@ -1,7 +1,11 @@
-package my.learn.tinyioc.xml;
+package my.learn.tinyioc.beans.xml;
 
 import my.learn.tinyioc.*;
-import my.learn.tinyioc.io.ResourceLoader;
+import my.learn.tinyioc.beans.AbstractBeanDefinitionReader;
+import my.learn.tinyioc.beans.BeanDefinition;
+import my.learn.tinyioc.beans.PropertyValue;
+import my.learn.tinyioc.beans.PropertyValues;
+import my.learn.tinyioc.beans.io.ResourceLoader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

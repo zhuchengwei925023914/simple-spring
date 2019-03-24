@@ -1,8 +1,8 @@
-package my.learn.tinyioc.factory;
+package my.learn.tinyioc.beans.factory;
 
-import my.learn.tinyioc.BeanDefinition;
+import my.learn.tinyioc.beans.BeanDefinition;
 import my.learn.tinyioc.BeanReference;
-import my.learn.tinyioc.PropertyValue;
+import my.learn.tinyioc.beans.PropertyValue;
 
 import java.lang.reflect.Field;
 

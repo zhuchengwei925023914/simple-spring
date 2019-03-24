@@ -1,6 +1,6 @@
-package my.learn.tinyioc;
+package my.learn.tinyioc.beans;
 
-import my.learn.tinyioc.io.ResourceLoader;
+import my.learn.tinyioc.beans.io.ResourceLoader;
 
 import java.util.HashMap;
 import java.util.Map;

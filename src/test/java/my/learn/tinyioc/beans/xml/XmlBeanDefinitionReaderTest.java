@@ -1,8 +1,8 @@
-package my.learn.tinyioc.xml;
+package my.learn.tinyioc.beans.xml;
 
 import junit.framework.TestCase;
-import my.learn.tinyioc.BeanDefinition;
-import my.learn.tinyioc.io.ResourceLoader;
+import my.learn.tinyioc.beans.BeanDefinition;
+import my.learn.tinyioc.beans.io.ResourceLoader;
 import org.junit.Test;
 
 import java.util.Map;

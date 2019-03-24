@@ -1,10 +1,10 @@
 package my.learn.tinyioc;
 
-import my.learn.tinyioc.factory.AbstractBeanFactory;
-import my.learn.tinyioc.factory.AutowireCapableBeanFactory;
-import my.learn.tinyioc.factory.BeanFactory;
-import my.learn.tinyioc.io.ResourceLoader;
-import my.learn.tinyioc.xml.XmlBeanDefinitionReader;
+import my.learn.tinyioc.beans.BeanDefinition;
+import my.learn.tinyioc.beans.factory.AbstractBeanFactory;
+import my.learn.tinyioc.beans.factory.AutowireCapableBeanFactory;
+import my.learn.tinyioc.beans.io.ResourceLoader;
+import my.learn.tinyioc.beans.xml.XmlBeanDefinitionReader;
 import org.junit.Test;
 
 import java.util.Map;
@@ -22,7 +22,7 @@ public class BeanFactoryTest {
         xmlBeanDefinitionReader.loadBeanDefinitions("tinyioc.xml");
 
         // 初始化BeanFactory并注册bean
-        BeanFactory beanFactory = new AutowireCapableBeanFactory();
+        AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
         Map<String, BeanDefinition> registry = xmlBeanDefinitionReader.getRegistry();
         for (Map.Entry<String, BeanDefinition> beanDefinitionEntry : registry.entrySet()) {
             beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());

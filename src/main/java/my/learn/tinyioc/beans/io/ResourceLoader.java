@@ -1,4 +1,4 @@
-package my.learn.tinyioc.io;
+package my.learn.tinyioc.beans.io;
 
 import java.net.URL;
 

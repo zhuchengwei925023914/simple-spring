@@ -1,4 +1,4 @@
-package my.learn.tinyioc;
+package my.learn.tinyioc.beans;
 
 /**
  * Bean的属性

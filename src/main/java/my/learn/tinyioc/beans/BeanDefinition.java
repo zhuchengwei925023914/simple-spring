@@ -1,6 +1,4 @@
-package my.learn.tinyioc;
-
-import java.util.ArrayList;
+package my.learn.tinyioc.beans;
 
 /**
  * Created by zhu on 2019/3/21.

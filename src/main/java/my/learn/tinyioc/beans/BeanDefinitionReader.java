@@ -1,4 +1,4 @@
-package my.learn.tinyioc;
+package my.learn.tinyioc.beans;
 
 /**
  * 从配置中读取BeanDefinition
